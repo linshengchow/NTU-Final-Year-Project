@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- source = urdf-mvp-jlk-1.7deg-W424-tm266e1-planar-pacecat-Assem01-v01.SLDASM -->
+<robot name="mrca">
+  <!-- link = IMU back center -->
+  <link name="imu_base_link">
+    <inertial>
+      <origin xyz="0 0.003 0.011" rpy="0 0 0" />
+      <mass value="0.05" />
+      <inertia
+        ixx="1.5E-05" ixy="0" ixz="0"
+        iyy="0" iyz="0"
+        izz="2E-05" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://mrca_description/meshes/imu_base_link.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://mrca_description/meshes/imu_base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="imu_base_joint" type="fixed">
+    <origin xyz="-0.16895 0 0.092014" rpy="3.1416 0 0" />
+    <parent link="base_link" />
+    <child link="imu_base_link" />
+    <axis xyz="0 0 0" />
+  </joint>
+</robot>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<robot name="mrca" xmlns:xacro="http://www.ros.org/wiki/xacro">
+    <!-- main platform -->
+    <xacro:include filename="mrca_v1_platform.urdf.xacro" />
+    <!-- 2D lidar Pacecat LDS50C-E -->
+    <xacro:include filename="mrca_2dlidar.urdf.xacro" />
+    <!-- IMU -->
+    <xacro:include filename="mrca_imu.urdf.xacro" />
+    <!-- RGBD camera - Percipio TM265E1 -->
+    <xacro:include filename="mrca_rgbd_tm265E1.urdf.xacro" />
+</robot>
