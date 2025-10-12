@@ -8,7 +8,9 @@ from launch.substitutions import PythonExpression
 from ament_index_python.packages import get_package_share_directory
 from launch_ros.actions import Node
 from launch.substitutions import Command, LaunchConfiguration
-from launch.actions import DeclareLaunchArgument, ExecuteProcess
+from launch.actions import DeclareLaunchArgument
+from launch.actions import IncludeLaunchDescription
+from launch.launch_description_sources import PythonLaunchDescriptionSource
 
 
 def generate_launch_description():
@@ -22,6 +24,8 @@ def generate_launch_description():
     # robot = os.path.join(robot_description_dir, 'urdf','v1',robot_name )
     default_rviz_config_path = os.path.join(robot_description_dir, 'rviz', 'config.rviz')
     # robot_urdf = xacro.process(robot_xacro)
+    map = os.path.join( get_package_share_directory('simulation'),'maps','map.yaml')
+    nav2_params = os.path.join( get_package_share_directory('simulation'),'config','nav2_params.yaml')
 
     gazebo_ros = get_package_share_directory('gazebo_ros')
     gazebo_client = launch.actions.IncludeLaunchDescription(
@@ -59,15 +63,41 @@ def generate_launch_description():
         executable='rviz2',
         name='rviz2',
         output='screen',
+        parameters=[{'use_sim_time': True}],
         arguments=['-d', LaunchConfiguration('rvizconfig')],
     )
     
     robot_localization_node = Node(
-    package='robot_localization',
-    executable='ekf_node',
-    name='ekf_node',
-    output='screen',
-    parameters=[os.path.join(robot_description_dir, 'config/ekf.yaml'), {'use_sim_time': LaunchConfiguration('use_sim_time')}]
+        package='robot_localization',
+        executable='ekf_node',
+        name='ekf_node',
+        output='screen',
+        parameters=[os.path.join(robot_description_dir, 'config/ekf.yaml'), {'use_sim_time': LaunchConfiguration('use_sim_time')}]
+    )
+    
+    slam_launch = IncludeLaunchDescription(
+        PythonLaunchDescriptionSource(
+            os.path.join(get_package_share_directory('slam_toolbox'), 'launch', 'online_async_launch.py')
+        ),
+        launch_arguments={'use_sim_time': 'true'}.items()
+    )
+    
+    map_server_node = Node(
+        package='nav2_map_server',
+        executable='map_server',
+        name='map_server',
+        output='screen',
+        parameters=[{'yaml_filename': map}, {'use_sim_time': True}]
+    )
+    
+    nav2_launch = IncludeLaunchDescription(
+            PythonLaunchDescriptionSource(
+                os.path.join(get_package_share_directory('nav2_bringup'),'launch','bringup_launch.py')
+            ),
+            launch_arguments={
+                'map': map,
+                'use_sim_time': 'true',
+                'params_file': nav2_params}.items(),
     )
     
     ld = launch.LaunchDescription([
@@ -101,6 +131,9 @@ def generate_launch_description():
         spawn_entity,
         robot_localization_node,
         rviz_node,
+        #map_server_node,
+        #slam_launch,
+        nav2_launch,
     ])
     return ld
 
