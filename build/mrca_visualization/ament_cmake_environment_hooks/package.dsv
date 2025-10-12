@@ -1,0 +1,4 @@
+source;share/mrca_visualization/local_setup.bash
+source;share/mrca_visualization/local_setup.dsv
+source;share/mrca_visualization/local_setup.sh
+source;share/mrca_visualization/local_setup.zsh

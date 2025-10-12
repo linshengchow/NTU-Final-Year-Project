@@ -1,0 +1,8 @@
+source;share/mrca_visualization/hook/cmake_prefix_path.ps1
+source;share/mrca_visualization/hook/cmake_prefix_path.dsv
+source;share/mrca_visualization/hook/cmake_prefix_path.sh
+source;share/mrca_visualization/local_setup.bash
+source;share/mrca_visualization/local_setup.dsv
+source;share/mrca_visualization/local_setup.ps1
+source;share/mrca_visualization/local_setup.sh
+source;share/mrca_visualization/local_setup.zsh

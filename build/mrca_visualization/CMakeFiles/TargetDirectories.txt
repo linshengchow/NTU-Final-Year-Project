@@ -1,0 +1,9 @@
+/home/Navigation_fyp/build/mrca_visualization/CMakeFiles/uninstall.dir
+/home/Navigation_fyp/build/mrca_visualization/CMakeFiles/mrca_visualization_uninstall.dir
+/home/Navigation_fyp/build/mrca_visualization/CMakeFiles/test.dir
+/home/Navigation_fyp/build/mrca_visualization/CMakeFiles/edit_cache.dir
+/home/Navigation_fyp/build/mrca_visualization/CMakeFiles/rebuild_cache.dir
+/home/Navigation_fyp/build/mrca_visualization/CMakeFiles/list_install_components.dir
+/home/Navigation_fyp/build/mrca_visualization/CMakeFiles/install.dir
+/home/Navigation_fyp/build/mrca_visualization/CMakeFiles/install/local.dir
+/home/Navigation_fyp/build/mrca_visualization/CMakeFiles/install/strip.dir

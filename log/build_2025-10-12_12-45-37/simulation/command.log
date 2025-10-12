@@ -1,0 +1,6 @@
+Invoking command in '/home/Navigation_fyp/build/simulation': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake /home/Navigation_fyp/src/simulation -DCMAKE_INSTALL_PREFIX=/home/Navigation_fyp/install/simulation
+Invoked command in '/home/Navigation_fyp/build/simulation' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake /home/Navigation_fyp/src/simulation -DCMAKE_INSTALL_PREFIX=/home/Navigation_fyp/install/simulation
+Invoking command in '/home/Navigation_fyp/build/simulation': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --build /home/Navigation_fyp/build/simulation -- -j16 -l16
+Invoked command in '/home/Navigation_fyp/build/simulation' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --build /home/Navigation_fyp/build/simulation -- -j16 -l16
+Invoking command in '/home/Navigation_fyp/build/simulation': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --install /home/Navigation_fyp/build/simulation
+Invoked command in '/home/Navigation_fyp/build/simulation' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --install /home/Navigation_fyp/build/simulation

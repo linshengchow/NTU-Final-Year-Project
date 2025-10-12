@@ -1,0 +1,6 @@
+Invoking command in '/home/Navigation_fyp/build/mrca_description': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake /home/Navigation_fyp/src/mrca_description -DCMAKE_INSTALL_PREFIX=/home/Navigation_fyp/install/mrca_description
+Invoked command in '/home/Navigation_fyp/build/mrca_description' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake /home/Navigation_fyp/src/mrca_description -DCMAKE_INSTALL_PREFIX=/home/Navigation_fyp/install/mrca_description
+Invoking command in '/home/Navigation_fyp/build/mrca_description': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --build /home/Navigation_fyp/build/mrca_description -- -j16 -l16
+Invoked command in '/home/Navigation_fyp/build/mrca_description' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --build /home/Navigation_fyp/build/mrca_description -- -j16 -l16
+Invoking command in '/home/Navigation_fyp/build/mrca_description': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --install /home/Navigation_fyp/build/mrca_description
+Invoked command in '/home/Navigation_fyp/build/mrca_description' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --install /home/Navigation_fyp/build/mrca_description
