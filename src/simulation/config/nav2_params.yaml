@@ -280,7 +280,7 @@ global_costmap:
       inflation_layer:
         plugin: "nav2_costmap_2d::InflationLayer"
         cost_scaling_factor: 3.0
-        inflation_radius: 0.55
+        inflation_radius: 0.3
       always_send_full_costmap: True
 
 # The yaml_filename does not need to be specified since it going to be set by defaults in launch.
@@ -288,7 +288,7 @@ global_costmap:
 # file & provide full path to map below. If CLI map configuration or launch default is provided, that will be used.
 map_server:
   ros__parameters:
-    yaml_filename: "/home/Navigation_fyp/src/simulation/maps/map.yaml"
+    yaml_filename: "/home/Navigation_fyp/src/simulation/maps/map.yaml" #launch file arguments will overwrite this 
 
 map_saver:
   ros__parameters:
