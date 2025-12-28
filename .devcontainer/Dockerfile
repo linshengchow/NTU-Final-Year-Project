@@ -17,7 +17,7 @@ RUN groupadd --gid $USER_GID $USERNAME \
     && chmod 0440 /etc/sudoers.d/$USERNAME
 RUN apt-get update && apt-get upgrade -y
 RUN apt-get install -y python3-pip
-RUN apt-get update && apt-get install -y \
+RUN apt-get update --fix-missing && apt-get install -y \
     ros-humble-navigation2 \
     ros-humble-nav2-bringup \
     ros-humble-turtlebot3-gazebo\
@@ -29,11 +29,13 @@ RUN apt-get update && apt-get install -y \
     ros-humble-slam-toolbox\
     ros-humble-navigation2\
     ros-humble-nav2-bringup\
+    ros-humble-rqt*\
+    ros-humble-teleop-twist-keyboard\
     && rm -rf /var/lib/apt/lists/*
 RUN echo "source /usr/share/gazebo/setup.bash" >> /etc/bash.bashrc
 RUN echo "source /opt/ros/humble/setup.bash" >> /etc/bash.bashrc
 ENV SHELL /bin/bash
-#ENV GAZEBO_MODEL_PATH=/home/ROS2_Demo/src/aws-robomaker-hospital-world/models:/home/ROS2_Demo/src/aws-robomaker-hospital-world/fuel_models
+# ENV GAZEBO_MODEL_PATH=/home/ROS2_Demo/src/aws-robomaker-hospital-world/models:/home/ROS2_Demo/src/aws-robomaker-hospital-world/fuel_models
 
 # ********************************************************
 # * Anything else you want to do like clean up goes here *
