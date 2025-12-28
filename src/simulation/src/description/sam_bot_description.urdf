@@ -140,6 +140,19 @@
   <xacro:box_inertia m="0.1" w="0.1" d="0.1" h="0.1"/>
 </link>
 
+  <gazebo>
+    <plugin name="libgazebo_ros_p3d" filename="libgazebo_ros_p3d.so">
+        <ros>
+            <namespace>p3d</namespace>
+            <remapping>odom:=odom</remapping>
+        </ros>
+        <frame_name>map</frame_name>
+        <body_name>base_link</body_name>
+        <update_rate>200.0</update_rate>
+        <gaussian_noise>0</gaussian_noise>
+    </plugin>
+  </gazebo>
+
 <joint name="imu_joint" type="fixed">
   <parent link="base_link"/>
   <child link="imu_link"/>
