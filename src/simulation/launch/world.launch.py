@@ -12,20 +12,17 @@ from launch.actions import DeclareLaunchArgument
 from launch.actions import IncludeLaunchDescription
 from launch.launch_description_sources import PythonLaunchDescriptionSource
 
-TURTLEBOT3_MODEL = os.environ['TURTLEBOT3_MODEL']
 
 def generate_launch_description():
     world_file_name = "simple_world.world"
-    robot_name = "turtlebot3_waffle.urdf" 
-    # robot_name = "mrca_v1_description.urdf.xacro"
+    robot_name = "turtlebot3_waffle" 
+    
     simulation_dir = get_package_share_directory('simulation') 
-    robot_description_dir = get_package_share_directory('turtlebot3_description') 
-    # robot_description_dir = get_package_share_directory('mrca_description') #for mrca_v1
+    robot_description_dir = get_package_share_directory('turtlebot3_gazebo') 
+    
     world = os.path.join(get_package_share_directory('simulation'), 'worlds', world_file_name)
-    robot = os.path.join(robot_description_dir,'urdf', robot_name)
-    # robot = os.path.join(robot_description_dir, 'urdf','v1',robot_name )
+    robot = os.path.join(robot_description_dir,'models',robot_name, 'model.sdf')
     default_rviz_config_path = os.path.join(simulation_dir, 'rviz', 'config.rviz')
-    # robot_urdf = xacro.process(robot_xacro)
     map = os.path.join( get_package_share_directory('simulation'),'maps','map.yaml')
     nav2_params = os.path.join( get_package_share_directory('simulation'),'config','nav2_params.yaml')
 
@@ -41,12 +38,10 @@ def generate_launch_description():
     )
 
     robot_state_publisher_node = Node(
-            package='robot_state_publisher',
-            executable='robot_state_publisher',
-            name='robot_state_publisher',
-            output='screen',
-            parameters=[{'use_sim_time': True}],
-            arguments=[robot])
+        package='robot_state_publisher',
+        executable='robot_state_publisher',
+        parameters=[{'robot_description': Command(['xacro ', LaunchConfiguration('model')])}]
+    )
     
     joint_state_publisher_node = Node(
         package='joint_state_publisher',
@@ -130,14 +125,14 @@ def generate_launch_description():
             ),
         gazebo_server,
         gazebo_client,
-        #joint_state_publisher_node,
+        joint_state_publisher_node,
         robot_state_publisher_node,
         spawn_entity,
-        robot_localization_node,
+        #robot_localization_node,
         rviz_node,
         #map_server_node,
-        slam_launch,
-        #nav2_launch,
+        #slam_launch,
+        nav2_launch,
     ])
     return ld
 
