@@ -1,9 +1,6 @@
 [submodule "src/rf2o_laser_odometry"]
 	path = src/rf2o_laser_odometry
 	url = git@github.com:MAPIRlab/rf2o_laser_odometry.git
-[submodule "src/turtlebot3_simulations"]
-	path = src/turtlebot3_simulations
-	url = https://github.com/ROBOTIS-GIT/turtlebot3_simulations.git
 [submodule "src/opennav_docking"]
 	path = src/opennav_docking
 	url = https://github.com/open-navigation/opennav_docking.git
