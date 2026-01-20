@@ -14,17 +14,21 @@ from launch.launch_description_sources import PythonLaunchDescriptionSource
 
 
 def generate_launch_description():
-    world_file_name = "simple_world.world"
+    world_file_name = "tb3_charging.world"
     robot_name = "turtlebot3_waffle" 
     
     simulation_dir = get_package_share_directory('simulation') 
     robot_description_dir = get_package_share_directory('turtlebot3_gazebo') 
+    world_dir = get_package_share_directory('simulation') 
+    map_dir = get_package_share_directory('simulation') 
+    config_dir = get_package_share_directory('simulation') 
     
-    world = os.path.join(get_package_share_directory('simulation'), 'worlds', world_file_name)
+    world = os.path.join(world_dir, 'worlds', world_file_name)
     robot = os.path.join(robot_description_dir,'models',robot_name, 'model.sdf')
     default_rviz_config_path = os.path.join(simulation_dir, 'rviz', 'config.rviz')
-    map = os.path.join( get_package_share_directory('simulation'),'maps','map.yaml')
-    nav2_params = os.path.join( get_package_share_directory('simulation'),'config','nav2_params.yaml')
+    map = os.path.join( map_dir,'maps','charging_map.yaml')
+    nav2_params = os.path.join(config_dir,'config','nav2_params.yaml')
+    docking_server_params = os.path.join(config_dir,'config','docking_server_params.yaml') #not used for now, can consider making docking params separate from nav2 params
 
     gazebo_ros = get_package_share_directory('gazebo_ros')
     gazebo_client = launch.actions.IncludeLaunchDescription(
@@ -99,6 +103,30 @@ def generate_launch_description():
                 'params_file': nav2_params}.items(),
     )
     
+    apriltag_detection_pipeline = IncludeLaunchDescription(
+        PythonLaunchDescriptionSource(
+            os.path.join(simulation_dir, 'launch', 'april_tag_detection_pipeline.launch.py')
+        ),
+        launch_arguments={'use_sim_time': 'true'}.items()
+    )
+    
+    docking_server = Node(
+        package='opennav_docking',
+        executable='opennav_docking',
+        name='docking_server',
+        output='screen',
+        parameters=[nav2_params,
+                    {'use_sim_time': True}],
+    )
+
+    lifecycle_manager = Node(
+        package='nav2_lifecycle_manager',
+        executable='lifecycle_manager',
+        name='lifecycle_manager_docking',
+        output='screen',
+        parameters=[{'autostart': True}, {'node_names': ['docking_server']}],
+    )
+    
     ld = launch.LaunchDescription([
         DeclareLaunchArgument(
           'world',
@@ -133,6 +161,9 @@ def generate_launch_description():
         #map_server_node,
         #slam_launch,
         nav2_launch,
+        apriltag_detection_pipeline,
+        docking_server,
+        lifecycle_manager,
     ])
     return ld
 

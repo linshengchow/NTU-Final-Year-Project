@@ -14,9 +14,12 @@
   <exec_depend>gazebo_ros</exec_depend>
   <exec_depend>gazebo</exec_depend>
   <exec_depend>gazebo_plugins</exec_depend>
-  <depend>rf2o_laser_odometry</depend>
-  <depend>turtlebot3</depend>
-  <depend>turtlebot3_simulations</depend>
+  <depend>rf2o_laser_odometry</depend>  
+  <depend>turtlebot3_gazebo</depend>  
+  <depend>opennav_docking</depend>  
+  <depend>opennav_docking_msgs</depend>  
+  <depend>opennav_docking_bt</depend>  
+  <depend>opennav_docking_core</depend>  
 
   <export>
     <build_type>ament_cmake</build_type>

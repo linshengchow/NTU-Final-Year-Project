@@ -18,17 +18,18 @@ RUN groupadd --gid $USER_GID $USERNAME \
 RUN apt-get update && apt-get upgrade -y
 RUN apt-get install -y python3-pip
 RUN apt-get update --fix-missing && apt-get install -y \
-    ros-humble-navigation2 \
+    ros-humble-navigation2* \
     ros-humble-nav2-bringup \
-    ros-humble-turtlebot3-gazebo\
+    ros-humble-opennav-docking* \
+    ros-humble-image-proc\
+    ros-humble-apriltag-ros\
+    ros-humble-turtlebot3-msgs\
     ros-humble-rviz2 \
     ros-humble-joint-state-publisher-gui\
     ros-humble-xacro\
     ros-humble-sdformat-urdf\
     ros-humble-robot-localization\
     ros-humble-slam-toolbox\
-    ros-humble-navigation2\
-    ros-humble-nav2-bringup\
     ros-humble-rqt*\
     ros-humble-teleop-twist-keyboard\
     && rm -rf /var/lib/apt/lists/*
