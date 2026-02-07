@@ -29,6 +29,8 @@ amcl:
     robot_model_type: "nav2_amcl::DifferentialMotionModel"
     save_pose_rate: 0.5
     sigma_hit: 0.2
+    set_initial_pose: true
+    initial_pose: {x: 0.5, y: 0.0, z: 0.0, yaw: 0.0}
     tf_broadcast: true
     transform_tolerance: 1.0
     update_min_a: 0.2
@@ -44,7 +46,7 @@ bt_navigator:
     use_sim_time: True
     global_frame: map
     robot_base_frame: base_link
-    odom_topic: /odom
+    odom_topic: /odometry/filtered
     bt_loop_duration: 10
     default_server_timeout: 20
     wait_for_service_timeout: 1000
@@ -344,7 +346,7 @@ velocity_smoother:
     min_velocity: [-0.26, 0.0, -1.0]
     max_accel: [2.5, 0.0, 3.2]
     max_decel: [-2.5, 0.0, -3.2]
-    odom_topic: "odom"
+    odom_topic: "/odometry/filtered"
     odom_duration: 0.1
     deadband_velocity: [0.0, 0.0, 0.0]
     velocity_timeout: 1.0
@@ -360,8 +362,9 @@ docking_server:
     max_retries: 3
     base_frame: "base_link"
     fixed_frame: "odom"
+    odom_topic: "/odometry/filtered"
     dock_backwards: true
-    rotate_to_dock: true
+    rotate_to_dock: false
     dock_prestaging_tolerance: 0.5
     service_introspection_mode: "disabled"
 
@@ -372,13 +375,13 @@ docking_server:
       plugin: "opennav_docking::SimpleChargingDock"
       docking_threshold: 0.05
       staging_x_offset: -0.7
-      #staging_yaw_offset: 3.142
+      staging_yaw_offset: 3.142
       use_external_detection_pose: true
       use_battery_status: false # true
       use_stall_detection: false # true
 
       external_detection_timeout: 1.0
-      external_detection_translation_x: -0.1
+      external_detection_translation_x: -0.3
       external_detection_translation_y: 0.0
       external_detection_rotation_roll: -1.57 #x-axis
       external_detection_rotation_pitch: 1.57 #y-axis
@@ -402,10 +405,10 @@ docking_server:
       use_collision_detection: true
       costmap_topic: "local_costmap/costmap_raw"
       footprint_topic: "local_costmap/published_footprint"
-      transform_tolerance: 0.1
+      transform_tolerance: 0.15
       projection_time: 5.0
       simulation_step: 0.1
-      dock_collision_threshold: 0.3
+      dock_collision_threshold: 0.5
 
 loopback_simulator:
   ros__parameters:

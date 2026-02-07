@@ -57,7 +57,7 @@ def generate_launch_description():
     spawn_entity = Node(
         package='gazebo_ros',
         executable='spawn_entity.py',
-        arguments=['-entity', 'turtlebot3_waffle', '-topic', 'robot_description','-x', '0', '-y', '2', '-z', '0'],
+        arguments=['-entity', 'turtlebot3_waffle', '-topic', 'robot_description','-x', '0.5', '-y', '0', '-z', '0'],
         output='screen',
     )
     
@@ -76,6 +76,12 @@ def generate_launch_description():
         name='ekf_node',
         output='screen',
         parameters=[os.path.join(simulation_dir, 'config/ekf.yaml'), {'use_sim_time': LaunchConfiguration('use_sim_time')}]
+    )
+    
+    laser_odometry = IncludeLaunchDescription(
+        PythonLaunchDescriptionSource(
+            os.path.join(get_package_share_directory('rf2o_laser_odometry'), 'launch', 'rf2o_laser_odometry.launch.py')
+        )
     )
     
     slam_launch = IncludeLaunchDescription(
@@ -156,7 +162,8 @@ def generate_launch_description():
         joint_state_publisher_node,
         robot_state_publisher_node,
         spawn_entity,
-        #robot_localization_node,
+        robot_localization_node,
+        laser_odometry,
         rviz_node,
         #map_server_node,
         #slam_launch,
