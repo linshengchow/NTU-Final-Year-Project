@@ -30,7 +30,7 @@ amcl:
     save_pose_rate: 0.5
     sigma_hit: 0.2
     set_initial_pose: true
-    initial_pose: {x: 0.5, y: 0.0, z: 0.0, yaw: 0.0}
+    initial_pose: {x: 0.5, y: 2.0, z: 0.0, yaw: 0.0}
     tf_broadcast: true
     transform_tolerance: 1.0
     update_min_a: 0.2
@@ -381,7 +381,7 @@ docking_server:
       use_stall_detection: false # true
 
       external_detection_timeout: 1.0
-      external_detection_translation_x: -0.3
+      external_detection_translation_x: -0.15
       external_detection_translation_y: 0.0
       external_detection_rotation_roll: -1.57 #x-axis
       external_detection_rotation_pitch: 1.57 #y-axis

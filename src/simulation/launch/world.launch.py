@@ -57,7 +57,7 @@ def generate_launch_description():
     spawn_entity = Node(
         package='gazebo_ros',
         executable='spawn_entity.py',
-        arguments=['-entity', 'turtlebot3_waffle', '-topic', 'robot_description','-x', '0.5', '-y', '0', '-z', '0'],
+        arguments=['-entity', 'turtlebot3_waffle', '-topic', 'robot_description','-x', '0.5', '-y', '2', '-z', '0'],
         output='screen',
     )
     
@@ -113,7 +113,12 @@ def generate_launch_description():
         PythonLaunchDescriptionSource(
             os.path.join(simulation_dir, 'launch', 'april_tag_detection_pipeline.launch.py')
         ),
-        launch_arguments={'use_sim_time': 'true'}.items()
+        launch_arguments={
+            'use_sim_time': 'true',
+            'image': '/camera/image_raw',
+            'camera_info': '/camera/camera_info',
+            'image_rect': '/camera/image_rect',
+            'parent_frame': 'camera_rgb_optical_frame'}.items()
     )
     
     docking_server = Node(

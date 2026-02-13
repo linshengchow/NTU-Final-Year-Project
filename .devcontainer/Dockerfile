@@ -32,6 +32,7 @@ RUN apt-get update --fix-missing && apt-get install -y \
     ros-humble-slam-toolbox\
     ros-humble-rqt*\
     ros-humble-teleop-twist-keyboard\
+    usbutils\
     && rm -rf /var/lib/apt/lists/*
 RUN echo "source /usr/share/gazebo/setup.bash" >> /etc/bash.bashrc
 RUN echo "source /opt/ros/humble/setup.bash" >> /etc/bash.bashrc

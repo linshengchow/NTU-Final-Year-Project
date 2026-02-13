@@ -26,7 +26,7 @@ def generate_launch_description():
         parameters=[{
             'queue_size': 5,
             'interpolation': 1,
-            'use_sim_time': True,
+            'use_sim_time': LaunchConfiguration('use_sim_time'),
             'image_transport': 'raw'
         }],
     )
@@ -39,7 +39,7 @@ def generate_launch_description():
             ('image_rect', LaunchConfiguration('image_rect')),
             ('camera_info', LaunchConfiguration('camera_info'))
         ],
-        parameters=[apriltag_ros_params],
+        parameters=[apriltag_ros_params,{'use_sim_time':LaunchConfiguration('use_sim_time') }],
         extra_arguments=[
             {'use_intra_process_comms':True}
         ]
