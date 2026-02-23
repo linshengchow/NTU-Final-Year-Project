@@ -1,0 +1,48 @@
+{
+    "name": "FYP Development Container",
+    "privileged": true,
+    "remoteUser": "linsheng",
+    "build": {
+        "dockerfile": "Dockerfile",
+        "args": {
+            "USERNAME": "linsheng"
+        }
+    },
+    "workspaceFolder": "/home/Navigation_fyp",
+    "workspaceMount": "source=${localWorkspaceFolder},target=/home/Navigation_fyp,type=bind",
+    "customizations": {
+        "vscode": {
+            "extensions":[
+                "ms-vscode.cpptools",
+                "ms-vscode.cpptools-themes",
+                "twxs.cmake",
+                "donjayamanne.python-extension-pack",
+                "eamodio.gitlens",
+                "ms-iot.vscode-ros",
+                "mhutchie.git-graph"
+            ]
+        }
+    },
+    "containerEnv": {
+        "DISPLAY": "unix:0",
+        "ROS_LOCALHOST_ONLY": "1",
+        "ROS_DOMAIN_ID": "42"
+    },
+    "runArgs": [
+        "--net=host",
+        "--pid=host",
+        "--ipc=host",
+        "-e", "DISPLAY=${env:DISPLAY}",
+        "--privileged",
+        "-v", "/dev/bus/usb:/dev/bus/usb"
+    ],
+    "mounts": [
+       "source=/tmp/.X11-unix,target=/tmp/.X11-unix,type=bind,consistency=cached",
+       "source=/dev/dri,target=/dev/dri,type=bind,consistency=cached"
+    ],
+         "postCreateCommand": "sudo rosdep update && sudo rosdep install --from-paths src --ignore-src -y && sudo chown -R $(whoami) /home/Navigation_fyp/ "
+
+   
+
+    
+}

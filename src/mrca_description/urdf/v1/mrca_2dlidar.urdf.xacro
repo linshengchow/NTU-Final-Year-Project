@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- source = urdf-mvp-jlk-1.7deg-W424-tm266e1-planar-pacecat-Assem01-v01.SLDASM -->
+<robot name="mrca" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <!-- link = 2D lidar front left -->
+  <link name="front_left_2d_lidar_base_link">
+    <inertial>
+      <origin xyz="-3.9E-05 0 0.022941" rpy="0 0 0" />
+      <mass value="0.1" />
+      <inertia
+        ixx="5E-05" ixy="0" ixz="0"
+        iyy="5E-05" iyz="0"
+        izz="4.9E-05" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://mrca_description/meshes/front_left_2d_lidar_base_link.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://mrca_description/meshes/front_left_2d_lidar_base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="front_left_2d_lidar_base_joint" type="fixed">
+    <origin xyz="0.79675 0.264 0.19802" rpy="0 0 0" />
+    <parent link="base_link" />
+    <child link="front_left_2d_lidar_base_link" />
+    <axis xyz="0 0 0" />
+  </joint>
+
+  <!-- link = 2D lidar back right -->
+  <link name="back_right_2d_lidar_base_link">
+    <inertial>
+      <origin xyz="-3.9E-05 0 0.022941" rpy="0 0 0" />
+      <mass value="0.1" />
+      <inertia
+        ixx="5E-05" ixy="0" ixz="0"
+        iyy="5E-05" iyz="0"
+        izz="4.9E-05" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://mrca_description/meshes/back_right_2d_lidar_base_link.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://mrca_description/meshes/back_right_2d_lidar_base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="back_right_2d_lidar_base_joint" type="fixed">
+    <origin xyz="-0.21395 -0.264 0.19801" rpy="0 0 3.1416" />
+    <parent link="base_link" />
+    <child link="back_right_2d_lidar_base_link" />
+    <axis xyz="0 0 0" />
+  </joint>
+
+  <!-- link = 2D lidar optical front left -->
+  <link name="front_left_2d_lidar_optical_link">
+  </link>
+  <joint name="front_left_2d_lidar_optical_joint" type="fixed">
+    <origin xyz="0.79675 0.264 0.23852" rpy="0 0 0" />
+    <parent link="base_link" />
+    <child link="front_left_2d_lidar_optical_link" />
+    <axis xyz="0 0 0" />
+  </joint>
+
+  <!-- link = 2D lidar optical back right -->
+  <link name="back_right_2d_lidar_optical_link">
+  </link>
+  <joint name="back_right_2d_lidar_optical_joint" type="fixed">
+    <!-- <origin xyz="-0.21395 -0.264 0.23851" rpy="0 0 3.1416" /> -->
+    <!-- manually adjusted to align back lidar with front lidar scan -->
+    <origin xyz="-0.205 -0.264 0.23851" rpy="0 0 3.2" />
+    <parent link="base_link" />
+    <child link="back_right_2d_lidar_optical_link" />
+    <axis xyz="0 0 0" />
+  </joint>
+</robot>
