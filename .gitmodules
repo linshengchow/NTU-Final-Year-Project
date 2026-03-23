@@ -1,0 +1,12 @@
+[submodule "src/turtlebot3_simulations"]
+	path = src/turtlebot3_simulations
+	url = https://github.com/linshengchow/turtlebot3_simulations.git
+[submodule "src/rf2o_laser_odometry"]
+	path = src/rf2o_laser_odometry
+	url = git@github.com:linshengchow/rf2o_laser_odometry.git
+[submodule "src/OrbbecSDK_ROS2"]
+	path = src/OrbbecSDK_ROS2
+	url = git@github.com:linshengchow/OrbbecSDK_ROS2.git
+[submodule "src/opennav_docking"]
+	path = src/opennav_docking
+	url = git@github.com:linshengchow/opennav_docking.git
