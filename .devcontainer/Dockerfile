@@ -20,7 +20,6 @@ RUN apt-get install -y python3-pip
 RUN apt-get update --fix-missing && apt-get install -y \
     ros-humble-navigation2* \
     ros-humble-nav2-bringup \
-    ros-humble-opennav-docking* \
     ros-humble-image-proc\
     ros-humble-apriltag-ros\
     ros-humble-turtlebot3-msgs\

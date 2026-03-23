@@ -20,6 +20,7 @@
   <depend>opennav_docking_msgs</depend>  
   <depend>opennav_docking_bt</depend>  
   <depend>opennav_docking_core</depend>  
+  <depend>map_changer</depend>
 
   <export>
     <build_type>ament_cmake</build_type>

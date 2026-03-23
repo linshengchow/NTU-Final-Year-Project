@@ -1,0 +1,16 @@
+floor_change_manager:
+  ros__parameters:
+    # General Config
+    map_url: "/home/Navigation_fyp/src/simulation/maps/charging_map.yaml"
+    
+    # Navigation Waypoints
+    lift_entry_staging_pose: [0.0, -1.7, 3.14159]
+    lift_pose: [-1.0, -1.7, 3.14159]
+    new_map_initial_pose: [0.5, 2.0, 0.0]
+    
+    # Docking Parameters
+    docking:
+      dock_id: "home_dock"
+      dock_type: "turtlebot_dock"
+      max_staging_time: 100.0
+      navigate_to_staging_pose: true
