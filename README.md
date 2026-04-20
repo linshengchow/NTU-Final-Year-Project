@@ -1,6 +1,6 @@
 # MRCA Navigation
 
-ROS 2 packages for the MRCA deployment and navigation stack.
+ROS 2 packages for deployment of the navigation stack on MRCA Hardware. 
 
 ## Launching Navigation Stack for MRCA
 
@@ -57,3 +57,29 @@ ros2 run multi_floor_manager execution_controller
 ```
 
 The execution controller manages each stage of the multi-floor navigation task. When you are ready to continue to the next stage, type `y` in the execution controller terminal.
+
+## Testing Docking 
+### 1. Launch the navigation stack
+
+Follow the steps in [Launching Navigation Stack for MRCA](#launching-navigation-stack-for-mrca). 
+
+### 2. Pick a location to place the Apriltag
+
+### 3. Ensure that the coordinates of the dock in the dock database more or less match the physical location of the Apriltag.
+
+The dock database already contains a few different dock locations, and you may refer to the full report to replicate the physical placement of the Apriltag. 
+
+### 4. Send a docking goal 
+```bash
+ros2 action send_goal /dock_robot opennav_docking_msgs/action/DockRobot "{
+  use_dock_id: true,
+  dock_id: 'home_dock',
+  dock_type: 'MRCA_dock',
+  max_staging_time: 1000.0,
+  navigate_to_staging_pose: true, 
+}" --feedback
+```
+### 5. Send an undocking goal (after successful docking)
+```bash
+ros2 action send_goal /undock_robot opennav_docking_msgs/action/UndockRobot "{dock_type: 'MRCA_dock', max_undocking_time: 30.0}"
+```
