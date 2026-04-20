@@ -1,0 +1,17 @@
+multi_floor_manager:
+  ros__parameters:
+    # General Config
+    map_url: "/home/mrca/workspace/ws_fyp_docking/src/Navigation_fyp/src/mrca_navigation/maps/b2_map.yaml"
+    
+    # Navigation Waypoints
+    lift_entry_staging_pose: [-1.3, -2.3, -1.57]
+    lift_pose: [-1.3, -5.5, -1.57]
+    new_map_initial_pose: [4.0, 3.8, 1.047]
+    lift_exit_pose: [2.5, 1.3, 1.134]
+    
+    # Docking Parameters
+    docking:
+      dock_id: "home_dock"
+      dock_type: "MRCA_dock"
+      max_staging_time: 100.0
+      navigate_to_staging_pose: true  

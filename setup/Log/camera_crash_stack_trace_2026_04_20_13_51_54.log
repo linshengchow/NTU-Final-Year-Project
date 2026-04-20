@@ -1,0 +1,15 @@
+Received signal: 11
+Stack trace (most recent call last) in thread 26033:
+#12   Object "[0xffffffffffffffff]", at 0xffffffffffffffff, in 
+#11   Object "/lib/aarch64-linux-gnu/libc.so.6", at 0xffffae219e9b, in 
+#10   Object "/lib/aarch64-linux-gnu/libc.so.6", at 0xffffae1b0397, in 
+#9    Object "/lib/aarch64-linux-gnu/libstdc++.so.6", at 0xffffae3e29cb, in 
+#8    Object "/home/mrca/workspace/ws_fyp_docking/install/orbbec_camera/lib/libOrbbecSDK.so.2", at 0xffff8b6ef8ff, in std::thread::_State_impl<std::thread::_Invoker<std::tuple<std::_Bind<void (*(std::shared_ptr<ObLogIntvlRecord>, unsigned long, spdlog::source_loc, spdlog::level::level_enum, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, char*))(std::shared_ptr<ObLogIntvlRecord>, unsigned long, spdlog::source_loc, spdlog::level::level_enum, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, char*&)> > > >::_M_run()
+#7    Object "/home/mrca/workspace/ws_fyp_docking/install/orbbec_camera/lib/libOrbbecSDK.so.2", at 0xffff8b6f18ab, in 
+#6    Object "/home/mrca/workspace/ws_fyp_docking/install/orbbec_camera/lib/libOrbbecSDK.so.2", at 0xffff8b612e67, in 
+#5    Object "/home/mrca/workspace/ws_fyp_docking/install/orbbec_camera/lib/libOrbbecSDK.so.2", at 0xffff8bcd3e57, in 
+#4    Object "/home/mrca/workspace/ws_fyp_docking/install/orbbec_camera/lib/libOrbbecSDK.so.2", at 0xffff8bcd3cdb, in 
+#3    Object "/home/mrca/workspace/ws_fyp_docking/install/orbbec_camera/lib/libOrbbecSDK.so.2", at 0xffff8bcc6ac7, in 
+#2    Object "/lib/aarch64-linux-gnu/libc.so.6", at 0xffffae1cc910, in 
+#1    Object "linux-vdso.so.1", at 0xffffae8107bb, in 
+#0    Object "/home/mrca/workspace/ws_fyp_docking/install/orbbec_camera/lib/liborbbec_camera.so", at 0xffffa860ead3, in signalHandler(int)

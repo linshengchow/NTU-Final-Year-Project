@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>mrca_navigation</name>
+  <version>1.0.0</version>
+  <description>
+    Package for autonomous navigation and docking of MRCA robot. 
+  </description>
+  <license>Apache 2.0</license>
+  <author email="chow0171@e.ntu.edu.sg">linsheng</author>
+  <maintainer email="chow0171@e.ntu.edu.sg">linsheng</maintainer>
+
+  <buildtool_depend>ament_cmake</buildtool_depend>
+
+  <depend>rf2o_laser_odometry</depend>  
+  <depend>opennav_docking</depend>  
+  <depend>opennav_docking_msgs</depend>  
+  <depend>opennav_docking_bt</depend>  
+  <depend>opennav_docking_core</depend>  
+
+  <export>
+    <build_type>ament_cmake</build_type>
+  </export>
+</package>
