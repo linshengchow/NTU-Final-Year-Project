@@ -4,6 +4,16 @@ ROS 2 packages for deployment of the navigation stack on MRCA Hardware.
 
 ## Launching Navigation Stack for MRCA
 
+### A. Controller
+### 1. Launch mobile base node 
+
+```bash
+cd ~/workspace/ws_wr_rris
+source install/setup.bash 
+ros2 launch wrp_sdk_robot robooterx.launch.py
+```
+
+### B. Main AGX
 ### 1. Launch all necessary drivers
 
 ```bash
