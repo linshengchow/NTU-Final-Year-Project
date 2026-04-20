@@ -22,6 +22,15 @@ bash init.sh
 ```
 
 This launches the IMU driver, LiDAR drivers for both LiDARs, LiDAR scan merger, LiDAR TF, camera driver, and the MRCA URDF.
+### 2. Ensure the correct map is loaded
+
+The available maps are:
+1. ```b2_map```: B2 lift lobby of Block N3.1A
+2. ```b4_map```: B4 lift lobby of Block N3.1A
+3. ```lab_map2```: RRIS Lab
+4. ```rooftopv2```: Level 3 walkway of Block N3
+   
+New areas can be mapped by enabling SLAM (inside ```navigation.launch.py```)
 
 ### 2. Launch the navigation stack in a new terminal
 
